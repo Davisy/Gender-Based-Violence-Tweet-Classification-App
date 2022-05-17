@@ -7,11 +7,6 @@ from langdetect import detect
 # text preprocessing modules
 from string import punctuation
 
-# text preprocessing modules
-from nltk.tokenize import word_tokenize
-
-import nltk
-from nltk.stem import WordNetLemmatizer
 import re  # regular expression
 
 
@@ -49,7 +44,7 @@ with open(
 # clean the dataset
 
 
-def text_cleaning(text, lemmatize_words=True):
+def text_cleaning(text):
     # Clean the text, with the option to remove stop_words and to lemmatize word
 
     # Clean the text
@@ -60,14 +55,7 @@ def text_cleaning(text, lemmatize_words=True):
     text = text.lower()
 
     # Remove punctuation from text
-    text = "".join([c for c in text if c not in punctuation])
-
-    # Optionally, shorten words to their stems
-    if lemmatize_words:
-        text = text.split()
-        lemmatizer = WordNetLemmatizer()
-        lemmatized_words = [lemmatizer.lemmatize(word) for word in text]
-        text = " ".join(lemmatized_words)
+    text = " ".join([c for c in text if c not in punctuation])
 
     # Return a list of words
     return text
