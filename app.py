@@ -16,6 +16,7 @@ from nltk.stem import WordNetLemmatizer
 import re  # regular expression
 
 # load stop words
+nltk.download('stopwords')
 stop_words = stopwords.words("english")
 
 
