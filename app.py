@@ -11,13 +11,8 @@ from string import punctuation
 from nltk.tokenize import word_tokenize
 
 import nltk
-from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import re  # regular expression
-
-# load stop words
-nltk.download('stopwords')
-stop_words = stopwords.words("english")
 
 
 # add banner image
@@ -54,7 +49,7 @@ with open(
 # clean the dataset
 
 
-def text_cleaning(text, remove_stop_words=True, lemmatize_words=True):
+def text_cleaning(text, lemmatize_words=True):
     # Clean the text, with the option to remove stop_words and to lemmatize word
 
     # Clean the text
@@ -66,12 +61,6 @@ def text_cleaning(text, remove_stop_words=True, lemmatize_words=True):
 
     # Remove punctuation from text
     text = "".join([c for c in text if c not in punctuation])
-
-    # Optionally, remove stop words
-    if remove_stop_words:
-        text = text.split()
-        text = [w for w in text if not w in stop_words]
-        text = " ".join(text)
 
     # Optionally, shorten words to their stems
     if lemmatize_words:
